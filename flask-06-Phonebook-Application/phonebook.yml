@@ -52,7 +52,7 @@ Resources:
     Properties:
       AllocatedStorage: 20
       DBInstanceClass: db.t2.micro
-      DBInstanceIdentifier: clarusway_phonebook
+      DBInstanceIdentifier: phonebook
       DBSecurityGroups: 
         - !Ref MySecGrp
       Engine: MySQL
@@ -129,7 +129,7 @@ Resources:
           sudo yum install git -y
           sudo yum install wget -y
           cd /home/ec2-user
-          RDS_ENDPOINT=$(aws ssm get-parameter --name "/clarusway_phonebook/rds-endpoint" --query "Parameter.Value" --output text)
+          RDS_ENDPOINT=$(aws ssm get-parameter --name "/phonebook/rds-endpoint" --query "Parameter.Value" --output text)
           echo "$RDS_ENDPOINT" > dbserver.endpoint
           wget -P templates https://raw.githubusercontent.com/Mecit-tuksoy/Flask/main/flask-06-Phonebook-Application/templates/index.html
           wget -P templates https://raw.githubusercontent.com/Mecit-tuksoy/Flask/main/flask-06-Phonebook-Application/templates/add-update.html
