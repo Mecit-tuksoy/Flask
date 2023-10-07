@@ -120,19 +120,23 @@ Resources:
           - !GetAtt MySecGrp.GroupId # !Ref MySecGrp
         UserData: !Base64 |
           #! /bin/bash
-          yum update -y
-          yum install python3 -y
-          yum install python3-pip -y
-          pip3 install flask
-          pip install Flask-MySQL
-          yum install git -y
+          sudo yum update -y
+          sudo yum install python3 -y
+          sudo yum install python3-pip -y
+          sudo pip3 install flask
+          sudo pip install Flask-MySQL
+          sudo pip install Flask pip
+          sudo yum install git -y
+          sudo yum install wget -y
           cd /home/ec2-user
-          wget -P templates https://raw.githubusercontent.com/Emrkts/project-04-Phonebook-Application/main/templates/index.html
-          wget -P templates https://raw.githubusercontent.com/Emrkts/project-04-Phonebook-Application/main/templates/delete.html
-          wget -P templates https://github.com/Emrkts/project-04-Phonebook-Application/blob/main/templates/add-update.html
-          wget https://raw.githubusercontent.com/Emrkts/project-04-Phonebook-Application/main/phonebook-app.py
-          wget https://raw.githubusercontent.com/Emrkts/project-04-Phonebook-Application/main/search-snapshot.png
-          python3 phonebook-app.py
+          RDS_ENDPOINT=$(aws ssm get-parameter --name "/clarusway_phonebook/rds-endpoint" --query "Parameter.Value" --output text)
+          echo "$RDS_ENDPOINT" > dbserver.endpoint
+          wget -P templates https://raw.githubusercontent.com/Mecit-tuksoy/Flask/main/flask-06-Phonebook-Application/templates/index.html
+          wget -P templates https://raw.githubusercontent.com/Mecit-tuksoy/Flask/main/flask-06-Phonebook-Application/templates/add-update.html
+          wget -P templates https://raw.githubusercontent.com/Mecit-tuksoy/Flask/main/flask-06-Phonebook-Application/templates/delete.html
+          wget https://raw.githubusercontent.com/Mecit-tuksoy/Flask/main/flask-06-Phonebook-Application/phonebook-app.py
+          wget https://github.com/Mecit-tuksoy/Flask/blob/main/flask-06-Phonebook-Application/search-snapshot.png
+          sudo python3 phonebook-app.py
       LaunchTemplateName: mecit
   
 
