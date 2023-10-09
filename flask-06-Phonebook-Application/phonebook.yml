@@ -68,7 +68,7 @@ Resources:
       TargetTrackingConfiguration:
         PredefinedMetricSpecification: 
           PredefinedMetricType: ASGAverageCPUUtilization
-        TargetValue: 60.0
+        TargetValue: 90.0
   MyASG:
     Type: AWS::AutoScaling::AutoScalingGroup
     Properties:
