@@ -83,7 +83,7 @@ Resources:
                 echo "${MyDBURI}" > /home/ec2-user/dbserver.endpoint
                 TOKEN="xxxxxxxxxxxxxxxxx"
                 cd /home/ec2-user
-                git clone https://$TOKEN@github.com/Mecit-tuksoy/phonebook.git
+                git clone https://$TOKEN@github.com/Mecit-tuksoy/Flask.git
                 python3 /home/ec2-user/Flask/flask-06-simple-phonebook-app/phonebook-app.py
               - MyDBURI: !GetAtt DBInstance.Endpoint.Address
 
